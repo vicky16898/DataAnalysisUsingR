@@ -1,0 +1,4 @@
+"0","total.wines <- nrow(df.wines)"
+"0","percentage.over11 <- round(sum(df.wines$alcohol > 11) / total.wines * 100, 1)"
+"0","highest.alcohol <- max(df.wines$alcohol)"
+"0",""

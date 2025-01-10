@@ -1,0 +1,5 @@
+"0","plot(df.wines$residual.sugar, df.wines$alcohol,"
+"0","     xlab = ""Sugar"", ylab = ""Alcohol"","
+"0","     main = """","
+"0","     pch = 1, cex = 0.8, col = ""black"")"
+"0",""
