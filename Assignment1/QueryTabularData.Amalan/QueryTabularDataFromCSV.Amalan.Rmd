@@ -5,18 +5,15 @@ date: "`r format(Sys.Date(), '%B %d, %Y')`"
 output:
   html_document:
     df_print: paged
+  pdf_document: default
 subtitle: Analysis of Wines
 ---
 
 ```{r setup, include=FALSE}
 library(knitr)
 
-df.wines <- read.csv(file = "whitewines.csv", header = F)
-if (is.na(as.numeric(df.wines[1, 1]))) {
-  df.wines <- read.csv(file = "whitewines.csv", header = T)
-} else {
-  df.wines <- read.csv(file = "whitewines.csv", header = F)
-}
+df.wines.first.row <- read.csv(file = "whitewines.csv", header = FALSE, nrows = 1)
+df.wines <- read.csv(file = "whitewines.csv", header = is.na(as.numeric(df.wines.first.row[1, 1])))
 ```
 ```{r calculations, include=FALSE}
 total.wines <- nrow(df.wines)
@@ -29,16 +26,8 @@ There are a total of `r total.wines` wines in this data set. *`r percentage.over
 
 The scatter plot below illustrates the correlation between alcohol and sugar content.
 
-```{css, echo=FALSE}
-.title-center-blue {
-  text-align: center;
-  color: blue;
-  font-weight: bold;
-}
-```
 
-
-### Sugar vs Alcohol Content {.title-center-blue}
+<center><h3 style="color:blue;"> Sugar vs Alcohol Content </h3></center>
 ```{r scatterPlot, echo=FALSE, fig.align='center'}
 plot(df.wines$residual.sugar, df.wines$alcohol,
      xlab = "Sugar", ylab = "Alcohol",
